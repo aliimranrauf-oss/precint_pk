@@ -13,7 +13,11 @@ export type Listing = {
   confirmed_at: string; // ISO date
   verified: boolean;
   description?: string;
+  photos?: string[];
+  agent_id?: string;
 };
+
+export const EXPIRY_DAYS = 14;
 
 const SAMPLE: Listing[] = [
   { id: "1", precinct: "10A", title: "Plot 250 gaz", type: "Plot", price: 14500000, agent_name: "Ali Estate", phone: "923001234567", confirmed_at: daysAgo(2), verified: true },
@@ -32,7 +36,7 @@ export async function getListings(filter: { precinct?: string; type?: string } =
   let rows: Listing[] = SAMPLE;
   if (supabase) {
     try {
-      let q = supabase.from("listings").select("*").eq("status", "active").order("created_at", { ascending: false });
+      let q = supabase.from("listings").select("*").eq("status", "active").gte("confirmed_at", new Date(Date.now() - EXPIRY_DAYS * 86400000).toISOString()).order("created_at", { ascending: false });
       if (filter.precinct) q = q.eq("precinct", filter.precinct);
       if (filter.type) q = q.eq("type", filter.type);
       const { data, error } = await q;

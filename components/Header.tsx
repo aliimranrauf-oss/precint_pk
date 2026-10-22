@@ -9,11 +9,11 @@ export default function Header() {
           <Link href="/listings">Listings</Link>
           <Link href="/#rates">Rates</Link>
           <Link href="/#why">Kyun Precinct?</Link>
-          <Link href="/#agents">Agents</Link>
+          <Link href="/dashboard">Dashboard</Link>
         </nav>
         <div className="btns">
-          <button className="btn">Login</button>
-          <button className="btn p">Post Ad</button>
+          <Link href="/login" className="btn">Login</Link>
+          <Link href="/dashboard/new" className="btn p">Post Ad</Link>
         </div>
       </div>
     </header>

@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Listing, formatPrice, confirmedText } from "@/lib/data";
 
 export default function ListingCard({ l }: { l: Listing }) {
-  const tone = ["", "b", "c"][Number(l.id.replace(/\D/g, "") || 0) % 3];
+  const tone = ["", "b", "c"][Number(l.id.replace(/\D/g, "").slice(0, 3) || 0) % 3];
+  const photo = l.photos?.[0];
   return (
     <div className="card">
       <Link href={`/listing/${l.id}`}>
         <div className={"ph " + tone}>
+          {photo && /* eslint-disable-next-line @next/next/no-img-element */ <img src={photo} alt={l.title} loading="lazy" />}
           {l.verified && <span className="badge">✔ Verified</span>}
         </div>
       </Link>

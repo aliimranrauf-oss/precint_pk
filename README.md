@@ -18,5 +18,11 @@ Bahria Town Karachi property platform. Next.js 14 + Supabase + Vercel.
 2. Vercel -> Add New -> Project -> repo chuno -> Environment Variables mein 2 Supabase keys daalo -> Deploy.
 3. Vercel -> Settings -> Domains mein `precinct.pk` jodo.
 
+## Phases
+Pure plan, stack aur status ke liye `PROJECT.md` aur `docs/` dekho.
+
+## Supabase SQL
+`supabase/schema.sql` phir `supabase/phase2.sql` run karo.
+
 ## Agla kaam
-Agent login (Supabase Auth), listing upload form, admin verify page, chatbot (Claude API) aur leads dashboard.
+Phase 3: chatbot (Claude API) aur leads dashboard.

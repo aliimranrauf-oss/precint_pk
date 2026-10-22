@@ -74,7 +74,7 @@ export default async function Home() {
         <div className="cta">
           <h2>Property agent ho?</h2>
           <div>Asli leads lein, CRM mein hisaab rakhein, aur Verified badge se bharosa banayein.</div>
-          <button className="btn">Agent account banayein</button>
+          <Link href="/login?mode=signup" className="btn">Agent account banayein</Link>
         </div>
       </div></section>
     </>
