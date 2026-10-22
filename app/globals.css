@@ -82,3 +82,4 @@ h2{font-size:22px;margin:0 0 14px}
 .pill.active{background:var(--brand);color:var(--brand-ink)}
 .pill.hidden,.pill.sold{background:var(--line);color:var(--muted)}
 .thumbs{display:flex;gap:6px;margin:6px 0;flex-wrap:wrap}.thumbs img{height:70px;border-radius:8px}
+.chatlog{white-space:pre-wrap;font-family:inherit;font-size:13px;background:var(--soft);padding:10px;border-radius:10px;margin:6px 0 0}

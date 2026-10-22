@@ -16,6 +16,7 @@ export default async function Dashboard({ searchParams }: { searchParams: { adde
   if (!user) redirect("/login");
   const agent = await ensureAgent(supabase, user);
   const { data } = await supabase.from("listings").select("*").eq("agent_id", user.id).order("created_at", { ascending: false });
+  const { count: newLeads } = await supabase.from("leads").select("id", { count: "exact", head: true }).eq("agent_id", user.id).eq("status", "new");
   const listings = (data ?? []) as (Listing & { status: string })[];
   const stale = (iso: string) => Date.now() - new Date(iso).getTime() > EXPIRY_DAYS * 86400000;
 
@@ -27,6 +28,7 @@ export default async function Dashboard({ searchParams }: { searchParams: { adde
           <div className="meta">{agent?.name} · {agent?.verified ? "✔ Verified agent" : "Agent verification baqi"}</div>
         </div>
         <div className="btns">
+          <Link href="/dashboard/leads" className="btn">Leads{newLeads ? ` (${newLeads} nayi)` : ""}</Link>
           <Link href="/dashboard/new" className="btn p">+ Nayi listing</Link>
           {agent?.is_admin && <Link href="/admin" className="btn">Admin</Link>}
           <form action="/auth/signout" method="post"><button className="btn">Logout</button></form>

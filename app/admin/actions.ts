@@ -26,3 +26,10 @@ export async function reject(formData: FormData) {
   await supabase.from("listings").update({ status: "hidden", verified: false }).eq("id", String(formData.get("id")));
   revalidatePath("/admin");
 }
+
+export async function assignLead(formData: FormData) {
+  const supabase = await guard();
+  if (!supabase) return;
+  await supabase.from("leads").update({ agent_id: String(formData.get("agent_id")) }).eq("id", String(formData.get("id")));
+  revalidatePath("/admin");
+}

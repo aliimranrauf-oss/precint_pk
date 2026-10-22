@@ -22,7 +22,7 @@ Bahria Town Karachi property platform. Next.js 14 + Supabase + Vercel.
 Pure plan, stack aur status ke liye `PROJECT.md` aur `docs/` dekho.
 
 ## Supabase SQL
-`supabase/schema.sql` phir `supabase/phase2.sql` run karo.
+`supabase/schema.sql`, phir `phase2.sql`, phir `phase3.sql` run karo. Vercel keys ke liye `docs/VERCEL-ENV.md`.
 
 ## Agla kaam
-Phase 3: chatbot (Claude API) aur leads dashboard.
+Phase 4: maps aur rate tracker.
